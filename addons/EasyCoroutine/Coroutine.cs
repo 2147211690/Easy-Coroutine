@@ -24,7 +24,8 @@ public class Coroutine
 
     public static void PhysicsFrame()
     {
-        while (_waitPhysicsFrameCoroutines.Count > 0)
+        int count = _waitPhysicsFrameCoroutines.Count;
+        while (count-- > 0)
         {
             var coroutine = _waitPhysicsFrameCoroutines.Dequeue();
             HandleWait(coroutine);
@@ -112,8 +113,7 @@ public class Coroutine
     {
         return 0;
     }
-
-    public static ulong WaitForPhysicsFrame()
+    public static ulong WaitForNextPhysicsFrame()
     {
         var content = GetCurrentCoroutine();
         _waitPhysicsFrameCoroutines.Enqueue(content);

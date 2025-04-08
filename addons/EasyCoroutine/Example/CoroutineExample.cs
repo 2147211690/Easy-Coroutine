@@ -59,7 +59,7 @@ public class CoroutineExample
     IEnumerator<ulong> Test6()
     {
         GD.Print("Hello I am Test6");
-        yield return Coroutine.WaitForPhysicsFrame();
+        yield return Coroutine.WaitForNextPhysicsFrame();
         GD.Print("Test6 is done");
     }
 }
