@@ -24,14 +24,14 @@ IEnumerator<ulong> TestCoroutine()
 ```
 
 ### Wait Types Reference
-| Wait Method                 | Description                |
-|-----------------------------|----------------------------|
-| `WaitForSeconds`            | Wait specified seconds     |
-| `WaitForTimeSpan`           | Wait custom time interval  |
-| `WaitForPhysicsFrame`       | Wait next physics frame    |
-| `WaitForTween`              | Wait Tween animation completion |
-| `WaitForUnlock`             | Wait custom event lock (multi-agent support) |
-| `WaitForOtherCoroutine`     | Wait other coroutine completion |
+| Wait Method               | Description                |
+|---------------------------|----------------------------|
+| `WaitForSeconds`          | Wait specified seconds     |
+| `WaitForTimeSpan`         | Wait custom time interval  |
+| `WaitForNextPhysicsFrame` | Wait next physics frame    |
+| `WaitForTween`            | Wait Tween animation completion |
+| `WaitForUnlock`           | Wait custom event lock (multi-agent support) |
+| `WaitForOtherCoroutine`   | Wait other coroutine completion |
 
 ## 🔗 Examples
 ### Event Lock Mechanism
