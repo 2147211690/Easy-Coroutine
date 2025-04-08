@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Project specific ignores
+project.godot
+EasyCoroutine.csproj
+EasyCoroutine.sln
+EasyCoroutine.csproj.DotSettings
+
+# Editors
+.idea/
