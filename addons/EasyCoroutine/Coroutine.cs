@@ -8,7 +8,7 @@ namespace EasyCoroutine;
 
 public class Coroutine
 {
-    private static readonly PriorityQueue<Coroutine, ulong> WaitTimeCoroutines = new();
+    private static readonly PriorityQueue<Coroutine, ulong> WaitTimeCoroutines = new(new UlongCpmparer());
     private static Queue<Coroutine> _waitPhysicsFrameCoroutines = new();
     private static Coroutine? _contextCoroutine;
     private static ulong _nowTime;
@@ -171,6 +171,16 @@ public class Coroutine
         WaitTime,
         WaitLazy,
     }
+
+    private class UlongCpmparer : IComparer<ulong>
+    {
+        public int Compare(ulong x, ulong y)
+        {
+            var r = x.CompareTo(y);
+            return r == 0 ? x.GetHashCode().CompareTo(y.GetHashCode()) : r;
+        }
+    }
+
     public class Lock
     {
         internal Lock(){}
