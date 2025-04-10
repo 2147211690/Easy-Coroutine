@@ -91,10 +91,24 @@ public class Coroutine
     {
         return (ulong)(seconds * 1000);
     }
+
     public static ulong WaitForTimeSpan(TimeSpan timeSpan)
     {
         return (ulong)timeSpan.TotalMilliseconds;
     }
+    
+    public static ulong WaitForSignal(GodotObject obj, string signalName)
+    {
+        var content = GetCurrentCoroutine();
+        obj.Connect(signalName, Callable.From(OnSignal), (uint)GodotObject.ConnectFlags.OneShot);
+        return ulong.MaxValue;
+
+        void OnSignal()
+        {
+            HandleWait(content);
+        }
+    }
+
     public static ulong WaitForUnlock(Lock cLock)
     {
         if (cLock.Unlocked) return 0;
